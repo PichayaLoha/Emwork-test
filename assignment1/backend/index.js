@@ -19,7 +19,7 @@ const db = mysql.createConnection({
   database: process.env.DB_NAME
 });
 
-db.connect(err => {
+db.connect(err => {ก
   if (err) {
     console.error('Error connecting to database:', err);
     return;

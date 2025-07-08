@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Temple By Region</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    #temple {
+      background-image: url('background.jpg'); /* เปลี่ยน path ภาพพื้นหลัง */
+      background-size: cover;
+      background-position: center;
+      padding: 50px 20px;
+    }
+
+    .templeall h1 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .templeall p {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .wat-container {
+      --columns: 4; /* ✅ เพิ่มเพื่อให้ getComputedStyle ทำงานได้ */
+      display: grid;
+      grid-template-columns: repeat(var(--columns), 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .wat {
+      background-color: white;
+      
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    .imagewatthai2 {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .wat span {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-shadow: 1px 1px 5px black;
+    }
+
+    .controls {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .controls button {
+      padding: 10px 15px;
+      margin: 0 5px;
+      border: none;
+      background-color: #222;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .controls button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<div id="temple" class="templeall">
+  <h1>TEMPLE BY REGION</h1>
+  <p>ค้นหาข้อมูลวัดตามภูมิภาค</p>
+
+  <div class="controls">
+    <button onclick="setColumns(2)">2 คอลัมน์</button>
+    <button onclick="setColumns(3)">3 คอลัมน์</button>
+    <button onclick="setColumns(4)">4 คอลัมน์</button>
+    <button onclick="toggleAutoPlay()">สลับ Auto Play</button>
+  </div>
+
+  <div class="wat-container" id="wat-container">
+    <div id="watthai" class="wat">
+      <img id="imagewatthai" class="imagewatthai2" src="https://media.discordapp.net/attachments/1073316579783213117/1392088625507860500/TSNBg3wSBdng7ijMhoxMj8PbUZGeJ3RfOZtNNUoAoHM.png?ex=686e4310&is=686cf190&hm=7fcfe21d6f8bf365c6c6b389a2037f5b4696a248874d223936a868bb2367ef10&=&format=webp&quality=lossless" alt="">
+      <span>ภาคเหนือ</span>
+    </div>
+    <div id="watthai" class="wat">
+      <img id="imagewatthai" class="imagewatthai2" src="https://media.discordapp.net/attachments/1073316579783213117/1392088311128002591/image-36.png?ex=686e42c5&is=686cf145&hm=e12b6de55a37fff49a415d96d09351cf661c7f2217f9d545a224d9b503c1fbbd&=&format=webp&quality=lossless" alt="">
+      <span>ภาคกลาง</span>
+    </div>
+    <div id="watthai" class="wat">
+      <img id="imagewatthai" class="imagewatthai2" src="https://media.discordapp.net/attachments/1073316579783213117/1392088533325578313/01-5-1024x576.png?ex=686e42fa&is=686cf17a&hm=98f03c7592d8ffb81458e0a24a95e3bd8e2d36d67c5412ff4b2b00d13bc30623&=&format=webp&quality=lossless" alt="">
+      <span>ภาคตะวันออกเฉียงเหนือ</span>
+    </div>
+    <div id="watthai" class="wat">
+      <img id="imagewatthai" class="imagewatthai2" src="https://media.discordapp.net/attachments/1073316579783213117/1392088571002753054/Wat-Benjamabophit.png?ex=686e4303&is=686cf183&hm=564cc70cceb0a7dd0b01d3d53d887a968f2309df031046ccf81ab16058db1760&=&format=webp&quality=lossless" alt="">
+      <span>ภาคตะวันตก</span>
+    </div>
+    <div id="watthai" class="wat">
+      <img id="imagewatthai" class="imagewatthai2" src="https://media.discordapp.net/attachments/1073316579783213117/1392092392688976003/image-38.png?ex=686e4692&is=686cf512&hm=ea0a5189c9c482eae79283d38e28cfb06f15e687515edae60136f0b098d0858a&=&format=webp&quality=lossless" alt="">
+      <span>ภาคใต้</span>
+    </div>
+    <div id="watthai" class="wat">
+      <img id="imagewatthai" class="imagewatthai2" src="https://media.discordapp.net/attachments/1073316579783213117/1392092432962813962/4DQpjUtzLUwmJZZSDtgEPiHHjeKEl84VOCrumIiTaiJq.png?ex=686e469b&is=686cf51b&hm=bf1819321349f2255404300188739c226a0d623387837a7dcd3f3abf60a7fb8c&=&format=webp&quality=lossless" alt="">
+      <span>ภาคตะวันออก</span>
+    </div>
+  </div> 
+</div>
+
+<script>
+  let autoplay = false;
+  let interval;
+
+  function setColumns(num) {
+    document.querySelector('.wat-container').style.setProperty('--columns', num);
+  }
+
+  function toggleAutoPlay() {
+    autoplay = !autoplay;
+    if (autoplay) {
+      interval = setInterval(() => {
+        const current = parseInt(getComputedStyle(document.querySelector('.wat-container')).getPropertyValue('--columns'));
+        const next = current === 4 ? 2 : current + 1;
+        setColumns(next);
+      }, 3000);
+    } else {
+      clearInterval(interval);
+    }
+  }
+
+  // เริ่มต้นที่ 4 คอลัมน์
+  setColumns(4);
+</script>
+
+</body>
+</html>
